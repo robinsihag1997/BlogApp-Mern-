@@ -3,14 +3,6 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 
-//middleware
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-
-//middleware routes
-const route = require("./Routes/route");
-app.use(route);
-
 //PORT
 require("dotenv").config();
 const PORT = process.env.PORT || 8000;
@@ -23,6 +15,17 @@ app.listen(PORT, () => {
     console.log(`Failed to listen on PORT ${PORT} message: ${error.message}`);
   }
 });
+
+//middleware
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+//middleware routes
+const userRoutes = require("./Routes/user.route");
+const authRoutes = require("./Routes/auth.route");
+
+app.use("/api/user", userRoutes);
+app.use("/api/auth", authRoutes);
 
 //DBconnection
 // put your database name below

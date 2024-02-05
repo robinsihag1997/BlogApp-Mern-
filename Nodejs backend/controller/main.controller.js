@@ -1,4 +1,4 @@
-const demoModel = require("../model/demo.model");
+// const demoModel = require("../model/demo.model");
 
 const homeRoute = (req, res) => {
   res.send("<h1>this is home page</h1>");
@@ -27,6 +27,7 @@ const demoPost = async (req, res) => {
     });
   }
 };
+
 module.exports = {
   homeRoute,
   demoPost,
