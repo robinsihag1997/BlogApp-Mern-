@@ -26,6 +26,6 @@ app.listen(PORT, () => {
 
 //DBconnection
 // put your database name below
-const datbase_name = "mydatabase";
+const datbase_name = "MernBlog";
 const dbconnection = require("./config/database");
 dbconnection(datbase_name);
