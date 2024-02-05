@@ -2,26 +2,24 @@ const bcrypt = require("bcrypt");
 const userModel = require("../model/user.model");
 
 const signup = async (req, res) => {
+  console.log(req.body);
   const { username, email, password } = req.body;
-
+  if (
+    (!username,
+    !password,
+    !email,
+    email === "",
+    password === "",
+    username === "")
+  ) {
+    res.status(400).json({
+      success: false,
+      message: "All fields are required",
+    });
+  }
   try {
-    if (
-      (!username,
-      !password,
-      !email,
-      email === "",
-      password === "",
-      username === "")
-    ) {
-      res.status(400).json({
-        success: false,
-        message: "All fields are required",
-      });
-    }
     // password hashing
     const haseshPassword = await bcrypt.hash(password, 10);
-
-    // creating user object into database
 
     const user = await userModel.create({
       username,
@@ -39,7 +37,7 @@ const signup = async (req, res) => {
     res.status(500).json({
       success: false,
       data: "internal server error",
-      Message: error.message,
+      Message: `${error.message}`,
     });
   }
 };
