@@ -44,7 +44,6 @@ const signup = async (req, res) => {
 };
 
 const signin = async (req, res) => {
-  console.log("route hit");
   const { email, password } = req.body;
 
   if (!email || !password || email === "" || password === "") {
