@@ -7,6 +7,7 @@ import Signup from "./Pages/Signup";
 import NotFound from "./Pages/NotFound";
 import Projects from "./Pages/Projects";
 import Header from "./Components/Header";
+import FooterCom from "./Components/Footer";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/Projects" element={<Projects />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <FooterCom />
     </>
   );
 }
