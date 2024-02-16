@@ -2,7 +2,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
-
+const path = require("path");
 //PORT
 require("dotenv").config();
 const PORT = process.env.PORT || 8000;
@@ -15,7 +15,7 @@ app.listen(PORT, () => {
     console.log(`Failed to listen on PORT ${PORT} message: ${error.message}`);
   }
 });
-
+const __dirname = path.resolve();
 //middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -30,7 +30,10 @@ app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/post", postRoutes);
 app.use("/api/comment", commentRoutes);
-
+app.use(express.static(path.join(__dirname, "/ClientReact/dist")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "ClientReact", "dist", "index.html"));
+});
 //DBconnection
 // put your database name below
 const datbase_name = "MernBlog";

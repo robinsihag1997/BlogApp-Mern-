@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "@reduxjs/toolkit": "^2.1.0"
+  },
+  "scripts": {
+    "build": "npm install && npm install --prefix ClientReact && npm run build --prefix ClientReact"
   }
 }
