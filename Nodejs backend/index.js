@@ -23,9 +23,13 @@ app.use(bodyParser.json());
 //middleware routes
 const userRoutes = require("./Routes/user.route");
 const authRoutes = require("./Routes/auth.route");
+const postRoutes = require("./Routes/post.route");
+const commentRoutes = require("./Routes/comment.route");
 
 app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/post", postRoutes);
+app.use("/api/comment", commentRoutes);
 
 //DBconnection
 // put your database name below
